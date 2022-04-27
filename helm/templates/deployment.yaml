@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       {{- include "helm.selectorLabels" . | nindent 6 }}
+
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -37,3 +38,5 @@ spec:
             - name: http
               containerPort: 5005
               protocol: TCP
+      nodeSelector:
+          agentpool: testnodepoll
